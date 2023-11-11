@@ -16,6 +16,7 @@ class Application extends Model
         "link",
         "salary",
         "modality",
+        "currency",
         "status",
         "comments",
     ];

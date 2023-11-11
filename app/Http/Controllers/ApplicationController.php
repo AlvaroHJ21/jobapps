@@ -12,7 +12,8 @@ class ApplicationController extends Controller
      */
     public function index()
     {
-        //
+        $applications = Application::all();
+        return view("applications.index", compact("applications"));
     }
 
     /**
@@ -20,7 +21,7 @@ class ApplicationController extends Controller
      */
     public function create()
     {
-        //
+        return view("applications.create");
     }
 
     /**
@@ -28,7 +29,30 @@ class ApplicationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $this->validate($request, [
+            "title" => "required|string",
+            "link" => "required|string|url",
+            "salary" => "required|numeric",
+            "currency" => "required|numeric|in:1,2",
+            "modality" => "required|numeric|in:1,2,3",
+            "status" => "required|numeric",
+            "comments" => "required|string",
+        ]);
+
+        // dd($request->all());
+
+        Application::create([
+            "title" => $request->title,
+            "link" => $request->link,
+            "salary" => $request->salary,
+            "currency" => $request->currency,
+            "modality" => $request->modality,
+            "status" => $request->status,
+            "comments" => $request->comments,
+        ]);
+
+        return redirect()->route("applications.index");
     }
 
     /**
