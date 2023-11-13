@@ -11,7 +11,7 @@
             <thead>
                 <tr>
                     <th>Título</th>
-                    <th>Link</th>
+                    <th>Empresa</th>
                     <th>Salario</th>
                     <th>Modalidad</th>
                     <th>Ubicación</th>
@@ -24,11 +24,7 @@
                 @foreach ($applications as $application)
                     <tr>
                         <td>{{ $application->title }}</td>
-                        <td>
-                            <a href="{{ $application->link }}" target="_blank" class="btn btn-sm btn-square">
-                                <i class="fas fa-arrow-up-right-from-square"></i>
-                            </a>
-                        </td>
+                        <td>{{ $application->company }}</td>
                         <td class="whitespace-nowrap">{{ $application->currency == '1' ? 'S/' : "$" }}
                             {{ $application->salary }}
                         </td>
@@ -40,16 +36,40 @@
                         <td>{{ $application->status }}</td>
 
                         <td class="flex justify-end gap-1">
-                            <button class="btn btn-square btn-sm"
-                                onclick="modal_description_{{ $application->id }}.showModal()">
-                                <i class="fa fa-eye"></i>
-                            </button>
-                            <a href="{{ route('applications.edit', $application->id) }}" class="btn btn-square btn-sm">
-                                <i class="fa fa-edit"></i>
-                            </a>
-                            <a href="/" class="btn btn-square btn-sm">
-                                <i class="fa fa-trash"></i>
-                            </a>
+                            <div class="dropdown dropdown-end">
+                                <label tabindex="0" class="m-1 btn">
+                                    <i class="fas fa-ellipsis-vertical"></i>
+                                </label>
+                                <ul tabindex="0"
+                                    class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+
+                                    <li>
+                                        <a href="{{ $application->link }}" target="_blank">
+                                            <i class="fas fa-arrow-up-right-from-square"></i> Ir a la aplicación
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <button onclick="modal_description_{{ $application->id }}.showModal()">
+                                            <i class="fa fa-eye"></i> Descripción
+                                        </button>
+                                    </li>
+
+                                    <li>
+                                        <a href="{{ route('applications.edit', $application->id) }}">
+                                            <i class="fa fa-edit"></i> Editar
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/" class="text-error">
+                                            <i class="fa fa-trash"></i> Eliminar
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+
+
+
                         </td>
                     </tr>
 

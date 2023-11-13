@@ -14,6 +14,10 @@
                 <label for="" class="label">Link</label>
                 <input type="text" name="link" class="w-full input input-bordered" placeholder="">
             </div>
+            <div class=" col-span-full">
+                <label for="company" class="label">Empresa</label>
+                <input type="text" name="company" class="w-full input input-bordered" placeholder="">
+            </div>
             <div class="col-span-6">
                 <label for="" class="label">Salario</label>
                 <div class="flex gap-2">

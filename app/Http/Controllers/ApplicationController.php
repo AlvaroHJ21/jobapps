@@ -86,6 +86,9 @@ class ApplicationController extends Controller
             "modality" => "numeric|in:1,2,3",
             "status" => "numeric",
             "comments" => "string",
+            "company" => "string",
+            "location" => "string",
+            "platform_id" => "numeric",
         ]);
 
         $application->update($request->input());
