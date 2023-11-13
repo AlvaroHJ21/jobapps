@@ -23,7 +23,9 @@
             <tbody>
                 @foreach ($applications as $application)
                     <tr>
-                        <td>{{ $application->title }}</td>
+                        <td>
+                            <a href="{{ $application->link }}" class="hover:underline">{{ $application->title }}</a>
+                        </td>
                         <td>{{ $application->company }}</td>
                         <td class="whitespace-nowrap">{{ $application->currency == '1' ? 'S/' : "$" }}
                             {{ $application->salary }}
