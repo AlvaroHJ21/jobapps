@@ -24,7 +24,7 @@
                 @foreach ($applications as $application)
                     <tr>
                         <td>
-                            <a href="{{ $application->link }}" class="hover:underline">{{ $application->title }}</a>
+                            <a href="{{ $application->link }}" target="_blank" class="hover:underline">{{ $application->title }}</a>
                         </td>
                         <td>{{ $application->company }}</td>
                         <td class="whitespace-nowrap">{{ $application->currency == '1' ? 'S/' : "$" }}
