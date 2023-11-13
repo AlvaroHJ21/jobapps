@@ -35,7 +35,7 @@
                         <td>{{ $application->status }}</td>
                         <td>{{ $application->comments }}</td>
                         <td class="flex justify-end">
-                            <a href="/" class="btn btn-sm">
+                            <a href="{{ route('applications.edit', $application->id) }}" class="btn btn-sm">
                                 <i class="fa fa-edit"></i>
                             </a>
                             <a href="/" class="btn btn-sm">

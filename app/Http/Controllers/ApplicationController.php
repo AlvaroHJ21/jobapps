@@ -68,7 +68,7 @@ class ApplicationController extends Controller
      */
     public function edit(Application $application)
     {
-        //
+        return view("applications.edit", compact("application"));
     }
 
     /**
@@ -76,7 +76,19 @@ class ApplicationController extends Controller
      */
     public function update(Request $request, Application $application)
     {
-        //
+        $this->validate($request, [
+            "title" => "string",
+            "link" => "string|url",
+            "salary" => "numeric",
+            "currency" => "numeric|in:1,2",
+            "modality" => "numeric|in:1,2,3",
+            "status" => "numeric",
+            "comments" => "string",
+        ]);
+
+        $application->update($request->input());
+
+        return redirect()->route("applications.index");
     }
 
     /**
