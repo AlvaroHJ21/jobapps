@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Application;
+use App\Models\Platform;
 use Illuminate\Http\Request;
 
 class ApplicationController extends Controller
@@ -12,7 +13,9 @@ class ApplicationController extends Controller
      */
     public function index()
     {
-        $applications = Application::all();
+
+        $applications = Application::with("platform")->get();
+
         return view("applications.index", compact("applications"));
     }
 
@@ -21,7 +24,8 @@ class ApplicationController extends Controller
      */
     public function create()
     {
-        return view("applications.create");
+        $platforms = Platform::all();
+        return view("applications.create", compact("platforms"));
     }
 
     /**
@@ -38,19 +42,16 @@ class ApplicationController extends Controller
             "modality" => "required|numeric|in:1,2,3",
             "status" => "required|numeric",
             "comments" => "required|string",
+            "company" => "string",
+            "location" => "string",
+            "platform_id" => "numeric",
         ]);
 
-        // dd($request->all());
 
-        Application::create([
-            "title" => $request->title,
-            "link" => $request->link,
-            "salary" => $request->salary,
-            "currency" => $request->currency,
-            "modality" => $request->modality,
-            "status" => $request->status,
-            "comments" => $request->comments,
-        ]);
+
+        Application::create($request->all());
+
+
 
         return redirect()->route("applications.index");
     }
@@ -68,7 +69,8 @@ class ApplicationController extends Controller
      */
     public function edit(Application $application)
     {
-        return view("applications.edit", compact("application"));
+        $platforms = Platform::all();
+        return view("applications.edit", compact("application", "platforms"));
     }
 
     /**
