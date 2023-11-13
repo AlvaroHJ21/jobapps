@@ -7,7 +7,9 @@
             <h3 class="text-lg font-bold">{{ $application->title }}</h3>
             <x-modality modality="{{ $application->modality }}" />
         </div>
-        <p class="py-4"> {{ $application->comments }}</p>
+        <p class="max-w-full py-4 text-red-50">
+            {!! nl2br(e($application->comments)) !!}
+        </p>
         <p>
             <span class="whitespace-nowrap">{{ $application->currency == '1' ? 'S/' : "$" }}
                 {{ $application->salary }}
