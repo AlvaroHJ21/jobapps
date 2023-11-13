@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ApplicationController;
+use App\Http\Controllers\PlatformController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,6 +16,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::resource('applications', ApplicationController::class);
+
+Route::resource('platforms', PlatformController::class);
 
 Route::get('/', function () {
     return view('home');

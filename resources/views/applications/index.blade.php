@@ -31,7 +31,7 @@
                         <td>
                             <x-modality modality="{{ $application->modality }}" />
                         </td>
-                        <td>{{ $application->currency == '1' ? 'S/' : "$" }} {{ $application->salary }}</td>
+                        <td class="whitespace-nowrap">{{ $application->currency == '1' ? 'S/' : "$" }} {{ $application->salary }}</td>
                         <td>{{ $application->status }}</td>
                         <td>{{ $application->comments }}</td>
                         <td class="flex justify-end">

@@ -13,7 +13,9 @@
 </head>
 
 <body>
+    <x-navbar />
     @yield('content')
+    @yield('scripts')
 </body>
 
 </html>

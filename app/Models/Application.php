@@ -19,5 +19,13 @@ class Application extends Model
         "currency",
         "status",
         "comments",
+        "company",
+        "location",
+        "platform_id",
     ];
+
+    // public function platform()
+    // {
+    //     return $this->belongsTo(Platform::class, "platform_id");
+    // }
 }
