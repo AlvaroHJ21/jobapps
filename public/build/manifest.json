@@ -8,5 +8,10 @@
     "file": "assets/app-22752a76.js",
     "isEntry": true,
     "src": "resources/js/app.js"
+  },
+  "resources/js/platforms/index.js": {
+    "file": "assets/index-f71b3a2e.js",
+    "isEntry": true,
+    "src": "resources/js/platforms/index.js"
   }
 }
