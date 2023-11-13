@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\PlatformController;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,10 +16,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/', [ApplicationController::class, 'index']);
 Route::resource('applications', ApplicationController::class);
 
 Route::resource('platforms', PlatformController::class);
 
-Route::get('/', function () {
-    return view('home');
-});
