@@ -18,6 +18,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [ApplicationController::class, 'index']);
 Route::resource('applications', ApplicationController::class);
+Route::get("applications/{application}/change-active", [ApplicationController::class, "changeActive"])->name("applications.change-active");
 
 Route::resource('platforms', PlatformController::class);
-

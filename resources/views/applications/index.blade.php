@@ -16,7 +16,7 @@
                     <th>Modalidad</th>
                     <th>Ubicación</th>
                     <th>Plataforma</th>
-                    <th>Estado</th>
+                    <th>Activo</th>
                     <th class="text-end">Acciones</th>
                 </tr>
             </thead>
@@ -24,7 +24,8 @@
                 @foreach ($applications as $application)
                     <tr>
                         <td>
-                            <a href="{{ $application->link }}" target="_blank" class="hover:underline">{{ $application->title }}</a>
+                            <a href="{{ $application->link }}" target="_blank"
+                                class="hover:underline">{{ $application->title }}</a>
                         </td>
                         <td>{{ $application->company }}</td>
                         <td class="whitespace-nowrap">{{ $application->currency == '1' ? 'S/' : "$" }}
@@ -35,7 +36,12 @@
                         </td>
                         <td>{{ $application->location }}</td>
                         <td>{{ $application->platform?->name }}</td>
-                        <td>{{ $application->status }}</td>
+                        <td>
+                            <a href="{{ route('applications.change-active', $application) }}"
+                            class="badge badge-outline {{ $application->is_active ? 'badge-success' : '' }}">
+                                {{ $application->is_active ? 'Activo' : 'Inactivo' }}
+                            </a>
+                        </td>
 
                         <td class="flex justify-end gap-1">
                             <div class="dropdown dropdown-end">

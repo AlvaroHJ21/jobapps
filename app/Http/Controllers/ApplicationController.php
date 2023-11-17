@@ -14,7 +14,9 @@ class ApplicationController extends Controller
     public function index()
     {
 
-        $applications = Application::with("platform")->get();
+        $applications = Application::orderBy("created_at", "desc")
+            ->with("platform")
+            ->get();
 
         return view("applications.index", compact("applications"));
     }
@@ -92,6 +94,15 @@ class ApplicationController extends Controller
         ]);
 
         $application->update($request->input());
+
+        return redirect()->route("applications.index");
+    }
+
+    public function changeActive(Application $application)
+    {
+        $application->update([
+            "is_active" => !$application->is_active
+        ]);
 
         return redirect()->route("applications.index");
     }

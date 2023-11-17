@@ -23,6 +23,7 @@ class Application extends Model
         "company",
         "location",
         "platform_id",
+        "is_active",
     ];
 
     public function platform(): BelongsTo
