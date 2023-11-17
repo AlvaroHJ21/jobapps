@@ -1,7 +1,7 @@
 @php
     $text = $modality == '1' ? 'Remoto' : ($modality == '2' ? 'Presencial' : 'Hibrido');
-    $class = $modality == '1' ? 'badge-primary' : ($modality == '2' ? 'badge-ghost' : 'badge-secondary');
+    $class = $modality == '1' ? 'text-success' : ($modality == '2' ? 'text-ghost' : 'text-secondary');
 @endphp
-<span class="badge badge-outline {{ $class }}">
+<span class="{{ $class }}">
     {{ $text }}
 </span>
