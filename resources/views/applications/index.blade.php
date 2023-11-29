@@ -22,23 +22,26 @@
             </thead>
             <tbody>
                 @foreach ($applications as $application)
+                    @php
+                        $opacity = $application->is_active == 0 ? 'opacity-50' : '';
+                    @endphp
                     <tr>
-                        <td>
+                        <td class="{{ $opacity }}">
                             <a href="{{ $application->link }}" target="_blank"
                                 class="hover:underline">{{ $application->title }}</a>
                         </td>
-                        <td>{{ $application->company }}</td>
-                        <td class="whitespace-nowrap">{{ $application->currency == '1' ? 'S/' : "$" }}
+                        <td class="{{ $opacity }}">{{ $application->company }}</td>
+                        <td class="{{ $opacity }} whitespace-nowrap">{{ $application->currency == '1' ? 'S/' : "$" }}
                             {{ $application->salary }}
                         </td>
-                        <td>
-                            <x-modality modality="{{ $application->modality }}" />
+                        <td class="{{ $opacity }}">
+                            <x-modality modality="{{ $application->modality }}" isActive="{{ $application->is_active }}" />
                         </td>
-                        <td>{{ $application->location }}</td>
-                        <td>{{ $application->platform?->name }}</td>
-                        <td>
+                        <td class="{{ $opacity }}">{{ $application->location }}</td>
+                        <td class="{{ $opacity }}">{{ $application->platform?->name }}</td>
+                        <td class="{{ $opacity }}">
                             <a href="{{ route('applications.change-active', $application) }}"
-                            class="badge badge-outline {{ $application->is_active ? 'badge-success' : '' }}">
+                                class="badge badge-outline {{ $application->is_active ? 'badge-success' : '' }}">
                                 {{ $application->is_active ? 'Activo' : 'Inactivo' }}
                             </a>
                         </td>

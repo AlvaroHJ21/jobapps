@@ -5,7 +5,7 @@
         </form>
         <div class="flex items-center gap-2">
             <h3 class="text-lg font-bold">{{ $application->title }}</h3>
-            <x-modality modality="{{ $application->modality }}" />
+            <x-modality modality="{{ $application->modality }}" isActive={{ $application->is_active }} />
         </div>
         <p class="max-w-full py-4 text-red-50">
             {!! nl2br(e($application->comments)) !!}
