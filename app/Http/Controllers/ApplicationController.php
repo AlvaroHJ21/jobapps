@@ -121,4 +121,13 @@ class ApplicationController extends Controller
     {
         //
     }
+
+    public function getAll()
+    {
+        $applications = Application::orderBy("created_at", "desc")
+            ->with("platform")
+            ->get();
+
+        return response()->json($applications);
+    }
 }
