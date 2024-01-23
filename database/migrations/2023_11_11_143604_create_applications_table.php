@@ -18,7 +18,8 @@ return new class extends Migration
             $table->integer("salary");
             $table->smallInteger("modality");
             $table->smallInteger("status");
-            $table->text("comments");
+            $table->text("description")->nullable();
+            $table->text("comments")->nullable();
             $table->timestamps();
         });
     }

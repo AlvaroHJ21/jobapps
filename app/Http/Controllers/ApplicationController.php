@@ -36,19 +36,23 @@ class ApplicationController extends Controller
     public function store(Request $request)
     {
 
+        // dd($request->all());
+
         $this->validate($request, [
             "title" => "required|string",
             "link" => "required|string|url",
-            "salary" => "required|numeric",
+            "min_salary" => "required|numeric",
+            "max_salary" => "required|numeric",
+            "to_agree" => "required|boolean",
             "currency" => "required|numeric|in:1,2",
             "modality" => "required|numeric|in:1,2,3",
             "status" => "required|numeric",
-            "comments" => "required|string",
+            "comments" => "nullable|string",
+            "description" => "nullable|string",
             "company" => "string",
             "location" => "string",
             "platform_id" => "numeric",
         ]);
-
 
 
         Application::create($request->all());
@@ -83,11 +87,14 @@ class ApplicationController extends Controller
         $this->validate($request, [
             "title" => "string",
             "link" => "string|url",
-            "salary" => "numeric",
+            "min_salary" => "numeric",
+            "max_salary" => "numeric",
+            "to_agree" => "boolean",
             "currency" => "numeric|in:1,2",
             "modality" => "numeric|in:1,2,3",
             "status" => "numeric",
-            "comments" => "string",
+            "comments" => "nullable|string",
+            "description" => "nullable|string",
             "company" => "string",
             "location" => "string",
             "platform_id" => "numeric",

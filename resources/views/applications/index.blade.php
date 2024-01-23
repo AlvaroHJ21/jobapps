@@ -31,11 +31,18 @@
                                 class="hover:underline">{{ $application->title }}</a>
                         </td>
                         <td class="{{ $opacity }}">{{ $application->company }}</td>
-                        <td class="{{ $opacity }} whitespace-nowrap">{{ $application->currency == '1' ? 'S/' : "$" }}
-                            {{ $application->salary }}
+                        <td class="{{ $opacity }} whitespace-nowrap">
+                            <div class="{{ $application->to_agree == 1 ? 'block' : 'hidden' }}">
+                                A convenir
+                            </div>
+                            <div class="{{ $application->to_agree == 1 ? 'hidden' : 'block' }}">
+                                {{ $application->currency == '1' ? 'S/' : "$" }}
+                                {{ $application->min_salary }} - {{ $application->max_salary }}
+                            </div>
                         </td>
                         <td class="{{ $opacity }}">
-                            <x-modality modality="{{ $application->modality }}" isActive="{{ $application->is_active }}" />
+                            <x-modality modality="{{ $application->modality }}"
+                                isActive="{{ $application->is_active }}" />
                         </td>
                         <td class="{{ $opacity }}">{{ $application->location }}</td>
                         <td class="{{ $opacity }}">{{ $application->platform?->name }}</td>

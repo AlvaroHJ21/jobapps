@@ -12,8 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('applications', function (Blueprint $table) {
-            $table->dropColumn('platform');
-            $table->foreignId('platform_id')->nullable()->constrained('platforms');
+            //remove salary column and add min_salary and max_salary and to_agree
+            $table->dropColumn('salary');
+            $table->integer('min_salary')->nullable();
+            $table->integer('max_salary')->nullable();
+            $table->boolean('to_agree')->default(false);
         });
     }
 
@@ -23,9 +26,11 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('applications', function (Blueprint $table) {
-            $table->string('platform');
-            $table->dropForeign(['platform_id']);
-            $table->dropColumn('platform_id');
+            //
+            $table->integer("salary");
+            $table->dropColumn('min_salary');
+            $table->dropColumn('max_salary');
+            $table->dropColumn('to_agree');
         });
     }
 };

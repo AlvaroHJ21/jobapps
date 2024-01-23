@@ -4,6 +4,15 @@
 @section('content')
     <section class="container m-auto w-[90%] py-8">
         <h1 class="text-2xl">Crear aplicacion</h1>
+
+        @if ($errors->any())
+            <div class="flex flex-col gap-1">
+                @foreach ($errors->all() as $error)
+                    <li class="alert alert-error">{{ $error }}</li>
+                @endforeach
+            </div>
+        @endif
+
         <form action={{ route('applications.store') }} method="POST" class="grid max-w-lg grid-cols-12 gap-3 m-auto mt-8">
             @csrf
             <div class="col-span-full">
@@ -18,15 +27,25 @@
                 <label for="company" class="label">Empresa</label>
                 <input type="text" name="company" class="w-full input input-bordered" placeholder="">
             </div>
-            <div class="col-span-6">
+            <div class="col-span-full">
                 <label for="" class="label">Salario</label>
                 <div class="flex gap-2">
                     <select name="currency" class="select select-bordered">
                         <option value="1">PEN</option>
                         <option value="2">USD</option>
                     </select>
-                    <input type="number" name="salary" class="w-full input input-bordered" placeholder="">
+                    <input type="number" name="min_salary" class="w-full input input-bordered" placeholder="" min="0">
+                    <input type="number" name="max_salary" class="w-full input input-bordered" placeholder="" min="0">
+                    <label for="to_agree">
+                        <span class="label-text whitespace-nowrap">A convenir</span>
+                        <input type="hidden" name="to_agree" value="0">
+                        <input type="checkbox" id="to_agree" name="to_agree" class="checkbox" value="1">
+                    </label>
                 </div>
+            </div>
+            <div class="col-span-6 ">
+                <label for="location" class="label">Ubicación</label>
+                <input type="text" name="location" class="w-full input input-bordered" placeholder="">
             </div>
             <div class="col-span-6">
                 <label for="" class="label">Modalidad</label>
@@ -35,10 +54,6 @@
                     <option value="2">Presencial</option>
                     <option value="3">Hibrido</option>
                 </select>
-            </div>
-            <div class=" col-span-full">
-                <label for="location" class="label">Ubicación</label>
-                <input type="text" name="location" class="w-full input input-bordered" placeholder="">
             </div>
             <div class="col-span-6">
                 <label for="" class="label">Plataforma</label>
@@ -54,6 +69,10 @@
                     <option value="1">Enviado</option>
                     <option value="2">Entrevista</option>
                 </select>
+            </div>
+            <div class="col-span-full">
+                <label for="" class="label">Descripción</label>
+                <textarea name="description" class="w-full textarea textarea-bordered" placeholder=""></textarea>
             </div>
             <div class="col-span-full">
                 <label for="" class="label">Comentarios</label>

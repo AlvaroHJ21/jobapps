@@ -15,15 +15,23 @@ class Application extends Model
     protected $fillable = [
         "title",
         "link",
-        "salary",
+        "min_salary",
+        "max_salary",
+        "to_agree",
         "modality",
         "currency",
         "status",
         "comments",
+        "description",
         "company",
         "location",
         "platform_id",
         "is_active",
+    ];
+
+    protected $casts = [
+        "to_agree" => "boolean",
+        "is_active" => "boolean",
     ];
 
     public function platform(): BelongsTo
