@@ -17,6 +17,7 @@
                     <th>Ubicación</th>
                     <th>Plataforma</th>
                     <th>Activo</th>
+                    <th>Fecha</th>
                     <th class="text-end">Acciones</th>
                 </tr>
             </thead>
@@ -51,6 +52,10 @@
                                 class="badge badge-outline {{ $application->is_active ? 'badge-success' : '' }}">
                                 {{ $application->is_active ? 'Activo' : 'Inactivo' }}
                             </a>
+                        </td>
+
+                        <td>
+                            <x-relative-date :date="$application->created_at" />
                         </td>
 
                         <td class="flex justify-end gap-1">
