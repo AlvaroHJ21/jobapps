@@ -1,11 +1,10 @@
-@php
-    function formatRelativeDate($dateProvided)
-    {
+<div>
+    @php
         // Fecha proporcionada
         // $fechaProporcionada = "2024-01-23 14:36:41";
 
         // Convertir la fecha proporcionada a un objeto DateTime
-        $targetDate = new DateTime($dateProvided);
+        $targetDate = new DateTime($date);
 
         // Obtener la fecha y hora actual
         $currentDate = new DateTime();
@@ -31,9 +30,5 @@
         }
 
         echo $message;
-    }
-@endphp
-
-<div>
-    {{ formatRelativeDate($date) }}
+    @endphp
 </div>
