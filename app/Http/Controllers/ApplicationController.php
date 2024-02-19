@@ -41,8 +41,8 @@ class ApplicationController extends Controller
         $this->validate($request, [
             "title" => "required|string",
             "link" => "required|string|url",
-            "min_salary" => "required|numeric",
-            "max_salary" => "required|numeric",
+            "min_salary" => "nullable|numeric",
+            "max_salary" => "nullable|numeric",
             "to_agree" => "required|boolean",
             "currency" => "required|numeric|in:1,2",
             "modality" => "required|numeric|in:1,2,3",
@@ -53,7 +53,6 @@ class ApplicationController extends Controller
             "location" => "string",
             "platform_id" => "numeric",
         ]);
-
 
         Application::create($request->all());
 
