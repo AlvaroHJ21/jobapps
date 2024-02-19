@@ -8,16 +8,15 @@
             <x-modality modality="{{ $application->modality }}" isActive={{ $application->is_active }} />
         </div>
         <p class="max-w-full py-4 text-red-50">
-            {!! nl2br(e($application->comments)) !!}
+            {!! nl2br(e($application->description)) !!}
         </p>
-        <p>
-            <span class="whitespace-nowrap">{{ $application->currency == '1' ? 'S/' : "$" }}
-                {{ $application->salary }}
-            </span>
-            -
-            <span>
-                {{ $application->location }}
-            </span>
-        </p>
+
+        <div class="{{ $application->to_agree == 1 ? 'block' : 'hidden' }}">
+            A convenir
+        </div>
+        <div class="{{ $application->to_agree == 1 ? 'hidden' : 'block' }}">
+            {{ $application->currency == '1' ? 'S/' : "$" }}
+            {{ $application->min_salary }} - {{ $application->max_salary }}
+        </div>
     </div>
 </dialog>
